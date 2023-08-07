@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: "14.17.2"
           registry-url: https://registry.npmjs.org/
-          
+
       - name: Get release tag version
         id: vars
         run: echo "version=${GITHUB_REF#refs/tags/release/v}" >> $GITHUB_OUTPUT
@@ -43,8 +43,7 @@ jobs:
 
       - name: publish
         run: |
-          echo "npm run start"
-          echo "npm publish"
-          jq . package.json
+          npm run start
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
